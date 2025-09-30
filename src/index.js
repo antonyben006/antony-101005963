@@ -14,6 +14,11 @@ app.post('/items', addItem);
 app.put('/items/:id', updateItem);
 app.delete('/items/:id', deleteItem);
 
+// Add root route to serve index.html
+app.get('/', (req, res) => {
+    res.redirect('/index.html');
+});
+
 db.init().then(() => {
     const port = process.env.PORT || 3000;
     app.listen(port, () => console.log(`Listening on port ${port}`));
